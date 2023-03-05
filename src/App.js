@@ -26,7 +26,7 @@ const style = {
   p: 4,
 };
 
-//button onclick signup
+
 
 function App() {
 
@@ -41,19 +41,17 @@ const [openSignIn, setOpenSignIn]= useState(false)
 const [currentUsernameValue, setCurrentUsernameValue] = useState(null)
 
 console.log(auth)
-//listener, and user from firebase, username, username dependency, anytime change fire off this, onitor if user
 
 useEffect (() => {
 auth.onAuthStateChanged((authUser) => {
-//userloggedin, on this
 
-//survive refresh communicate with installed values, across refresh across battlefields, array mutation
+
+
 if(authUser) {
-   //this is firebase.user, connect installed value global
-  setUser(authUser) //persitent cookie tracker, keep login, state not persistent, auth.onAuthStateChanged
-  if(authUser.displayName) { //what is authuser.ddisplayname, something from cookies, we , if never before then we must create profile value, this is regiostered and witout interference
-    //if user has displayname, then, if we just  created someone, we have the username we just created
-    //if new user attribute, if new user then 
+ 
+  setUser(authUser) 
+  if(authUser.displayName) { 
+
   } else {
     return authUser.updateProfile( {
       displayName:usernameState,
@@ -65,28 +63,23 @@ if(authUser) {
   setUser(null)
 
 }
-//frontend and backend listener 
 
 })
 
 return () => {
-  //cleanup, call unsubsrcibe , cancel asynchronous calls, cancel all subsricbtion cleanup function, to avoid somehting
-//unsubscribe need some data to rely on, we must connect our usefefct and snapshot, snapshot and unsubscirbe belongs together, hard listeners with unsubscribe, function needs values
+
 }
 
 },[user, usernameState])
-//log in, update username, refire frontend, detach, without duplicated
 
 useEffect(()=> {
-//this is where the code runs 
-//import db
+
 console.log(db.collection('posts'))
 
-//orderby timestamp desc
+
 
 db.collection('posts').orderBy('timestamp', 'asc').onSnapshot(snapshot => {
-//every time a new post is added, this code fires
-//push into post, post takes data
+
 setPosts(snapshot.docs.map(doc => ({
 
   id: doc.id,
@@ -105,7 +98,7 @@ const signUp = (event) => {
   
 
   event.preventDefault();
-  //state was lagging, we had it by deffault on fire:::
+
 
   auth.createUserWithEmailAndPassword( email, password)
 
@@ -116,25 +109,14 @@ const signUp = (event) => {
 
   .then((authUser) => {
 
-//incorrect state, value different
-
-//logging inside useeffect 
 
 
 
-
-    //we have a problem that state is not updated on exact fire
- // we need to fire our update profile when we know our state is correct
-
-
-    //our state is not updated when we push it to displayname, displayname is constant
-  
     return authUser.user.updateProfile({
       displayName: usernameState,
     }).then(console.log(authUser.user.displayName))
   })
   .catch((error) => alert(error.message))
-//backend vlaidation we are now with auth we return this value, backend and user 
 
 }
 
@@ -176,8 +158,7 @@ console.log(user.displayName)
 console.log(user.uid)
 console.log(user.displayName)
 setCurrentUsernameValue(user.displayName)
-console.log(user) // here we might have our contsant,
-//if this constant exists we do certain things
+console.log(user) 
   }
 
 
@@ -192,16 +173,7 @@ console.log("problem, firebase.auth must wait until certain change")
 
 
 
-//bunch of array values, we have now saved what is values and auth from firebased
 
-//posts inside of irebase snapshot powerful lsitener, every change document added chagned modified,
-//imagine something following and immediately noting, update document, post update, refire this bit of code 
-//on snapshot , on any change fire this code , bit of code 
-
-//we now have connection and auth with firebase, we have snapshot to closely monitor any pulsating data to engage
-
-
-//now databse is connected posts.map
 
 
 
@@ -213,10 +185,6 @@ console.log("problem, firebase.auth must wait until certain change")
     <div className="App">
 
 
-
- {/* i want*/}
- {/* file uploader/}
- {/* i want*/}
 
 
 
@@ -375,7 +343,7 @@ src= "https://www.siteexpert.biz/lib/image/instagram.png"
 <h1>Clone</h1>
 
 
-<button onClick={logAuth}>Our displayname</button>
+
 
 
 </div>
@@ -409,4 +377,3 @@ src= "https://www.siteexpert.biz/lib/image/instagram.png"
 export default App;
 
 
-//<h1>Instagram-Clone-Project</h1>
