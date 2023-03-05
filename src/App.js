@@ -169,18 +169,6 @@ console.log("problem, firebase.auth must wait until certain change")
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <div className="App">
 
@@ -207,8 +195,6 @@ console.log("problem, firebase.auth must wait until certain change")
 className="app__headerImage"
 src= "https://www.siteexpert.biz/lib/image/instagram.png"
 /> 
-
-
 
 
 
@@ -245,8 +231,6 @@ onChange={(e) => setPassword(e.target.value)}
 
 
 
-
-
       <Modal
         open={openSignIn}
         onClose={() => setOpenSignIn(false)}
@@ -264,9 +248,6 @@ onChange={(e) => setPassword(e.target.value)}
 className="app__headerImage"
 src= "https://www.siteexpert.biz/lib/image/instagram.png"
 /> 
-
-
-
 
 
 
@@ -291,29 +272,6 @@ onChange={(e) => setPassword(e.target.value)}
         </Box>
         </form>
       </Modal>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <div className="app__header">
