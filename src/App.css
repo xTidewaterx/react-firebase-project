@@ -1,0 +1,114 @@
+@import "./Post.css";
+
+
+* {
+
+  margin: 0;
+}
+
+
+h1 { text-align: center;}
+
+
+.app {
+
+  background-color: #fafafa;
+  height: 100%;
+}
+
+.app__header{
+
+
+  background-color: white;
+
+
+}
+
+.app__headerImage {
+
+  width: 140px;
+  padding-left: 20px;
+}
+
+.app__headerImageContainer {
+
+
+  border-bottom: 1px solid lightgray;
+
+
+}
+
+
+.app__headerButtonContainer {
+  display: inline;
+
+
+  position: absolute;
+  margin-right: 0px;
+  right: 0;
+
+}
+
+
+.app__progressBar {
+
+  display: block;
+}
+
+
+#modal-modal-description {
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+.app__imageUploader {
+
+  display: flexbox;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+h3 {
+  text-align: center;
+  padding: 100px;
+}
+
+
+
+
+.post__commentBox {
+
+  display: flex;
+  margin-top: 10px;
+}
+
+.post__input {
+ flex: 1;
+ border: none;
+ border-bottom: 1px solid rgb(204, 204, 204);
+ padding: 10px;
+}
+
+.post__button {
+  display: flex;
+  flex: 0;
+}
+
+
+
+.post__parentComment {
+  padding-bottom: 5px;
+}
+
+.post__replies {
+
+
+  margin-left: 20px;
+  border-left: 1px rgb(187, 187, 187) solid;
+  padding-left: 5px;
+  
+}
