@@ -16,9 +16,6 @@ function Post({username, caption, imageUrl, postId, currentUser}) {
   const [replies, setReplies] = useState([])
   const [commentRepliesState, setCommentRepliesState] = useState([])
   const [replyId, setReplyId] = useState(null);
-  //create post id
-  //specific post id, every document has internally have collection id
-
 
 
 
@@ -26,8 +23,6 @@ useEffect(() => {
 let unsubscribe;
 
   if(postId){
-    //deep into collection and onwards
-    //posts collection . then postid, then comments collection on that postid, and certain
 
  unsubscribe = db
     .collection("posts")
@@ -37,26 +32,22 @@ let unsubscribe;
     .onSnapshot((snapshot) => {
       console.log(snapshot.docs)
       setComments(snapshot.docs.map((doc) => doc.data())); //if new comment we iterate through any new
-    }); //we listen, nested listener, we listen to exact change of postid current nest ed specific 
+    }); 
     
   }
 
   return () => {
  
   }
-}, [postId]); //change of postId update, on each submit i guess, psotid relevant in contact
+}, [postId]); 
 
 
-
-//useeffect to monitor changes of postid, any new ids in database
 
 useEffect(() => {
   let unsubscribe2;
   
     if(postId){
-      //deep into collection and onwards
-      //posts collection . then postid, then comments collection on that postid, and certain
-  
+   
    unsubscribe2 = db
       .collection("posts")
       .doc(postId)
@@ -65,33 +56,16 @@ useEffect(() => {
       .orderBy('timestamp', 'asc')
       .onSnapshot((snapshot) => {
         console.log(snapshot.docs)
-        setReplies(snapshot.docs.map((doc) => doc.data())); //if new comment we iterate through any new
-      }); //we listen, nested listener, we listen to exact change of postid current nest ed specific 
-      
+        setReplies(snapshot.docs.map((doc) => doc.data())); 
+      }); 
     }
   
     return () => {
    
     }
-  }, [postId]); //change of postId update, on each submit i guess, psotid relevant in contact
+  }, [postId]); 
   
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -102,47 +76,7 @@ const postComment = (event) => {
   event.preventDefault();
 
 
-console.log("postcomment")
 
-console.log("postcomment")
-
-
-
-console.log("postcomment")
-
-
-
-console.log("postcomment")
-
-
-
-console.log("postcomment")
-
-
-
-console.log("postcomment")
-
-
-
-console.log("postcomment")
-
-
-
-
-
-
-
-
-
-
-  console.log(db.collection("posts").doc(postId).collection("comments").doc().id) //unique id from the documentreference unique on array
-
-
-  console.log(db.collection("posts").doc(postId).collection("comments").doc()) //unique id from the documentreference unique on array
-
-
-
-  console.log(db.collection("posts").doc(postId).collection("comments")) //unique id from the documentreference unique on array
 
   //long row of accesspoints, we have db link, then collection firebase directory link and renderedpostId
   db.collection("posts").doc(postId).collection("comments").add({
@@ -154,8 +88,7 @@ console.log("postcomment")
   
   })
   .then(
-    
-    //    docRef => {console.log(docRef.id)}) 
+
     
     docRef => {console.log(docRef.id)
     //we now have value secure
@@ -170,14 +103,8 @@ console.log("postcomment")
       //commentId:  db.collection("posts").doc(postId).collection("comments").documentID,
   
     
-    })//question, thos this exist anywhere::  iSzOGGj8cajry3ahV9B5, is this a comment id on post aaaaaa
-//here we have the value of our comment id, comment id allows us to direct an array at a specific comment
-//with specific id on comment
-//our comments have an idall comments must relu on sepcific id 
+    })
 
-//after promise resolved, in a cosmic divide , overwrite 
-.then (console.log("hhhhhhhhhhhhhhhhhhhhhhhh")
-)
 
 }
 
@@ -185,9 +112,7 @@ console.log("postcomment")
 
 useEffect(()=> {
 
-  //atually, perhaphs state that changes is an array of all values we need, an array with text, username, and  all relevant
-  //including our vital comments id to direct our new inputs, we have many values, different palces, for our entire 
-  //our entire data update, we direct our values with the commentId, our values are the current values, with a change of the replies array in the comments id sepcific path array, comments is a collection with an array to update replies
+ 
 
 if(replyId != null) {
 
@@ -208,11 +133,7 @@ console.log(replyId)
     commentId: replyId[0].replyId, 
     
 })
-  //all current values::
-  //get all current values from comment id
 
-
-  //db.collection("posts").doc(postId).collection("comments").doc("zBlP2PeW8brxbYEJN5wn").update({
 }
 
   }, [replyId] )
@@ -223,39 +144,6 @@ console.log(replyId)
 
 
 
-const postReply = (event, param) => {
-  event.preventDefault();
-
-console.log(comments)
-
-console.log(event)
-
-//const res = await db.collection('posts').doc('comments').set(data);
-
-
-//commentReplies.push({"replyusername": "Radical user", "replytext": "note:replyttext"})
-
-//setCommentRepliesState(commentReplies)
-
-
-  console.log(postId)
-  //new postid, has to be commentid on event we have a 
-
-  //long row of accesspoints, we have db link, then collection firebase directory link and renderedpostId
-  db.collection("posts").doc(postId).collection("comments").doc("zBlP2PeW8brxbYEJN5wn").update({
-    
-    //now all is good, we must have the id iteration of dynamic within replying we will have value from area
-    //comment id from area, and then keep values otherwise 
-
-
-    text: "comments.text",
-replies: [{"replyusername": "Radical user", "replytext": "note:replyttextttt"}]
-  
-  })
-
-
-
-}
 
 
 
@@ -266,8 +154,6 @@ replies: [{"replyusername": "Radical user", "replytext": "note:replyttextttt"}]
 
 
 
-
-//const certainTarget = FirebaseFirestore.instance.collection("posts").where("reply")
 
 console.log(comments)
 const getRepliesWithinSpecificComment = db.collection('posts').doc(postId).collection("comments").doc(postId).collection("replies");
@@ -275,7 +161,6 @@ const getRepliesWithinSpecificComment = db.collection('posts').doc(postId).colle
 console.log(getRepliesWithinSpecificComment)
 
 
-//we must find the entry into the db collection db link
 comments.map((item) => {
 
   console.log(item.text)
@@ -383,7 +268,3 @@ export default Post
 
 
 
-//total creation of pre updated stte:: <Button onClick={() => {setCommentRepliesState([{"text": comment.text, "username": comment.username, "commentId": comment.id}])}}>Reply here</Button> 
-
-
-//<Button onClick={() => {setCommentRepliesState([{"text": comment.text, "username": comment.username, "commentId": comment.id}])}}>Reply here</Button>
