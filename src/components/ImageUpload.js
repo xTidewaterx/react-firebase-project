@@ -23,7 +23,7 @@ function ImageUpload({username}) {
         }
 
         function handleChange (e) {
-            //if our file selector is connected to a file choose the first array value from data values
+           
 
             if(e.target.files[0]) {
                 console.log(e.target.files[0])
@@ -75,11 +75,11 @@ console.log(username)
     //complete function...
     storage
     .ref("images")
-    .child(image.name) //get med download url, we have storage access, storage is firebase link
+    .child(image.name) 
     .getDownloadURL()
     .then(url => {
         db.collection("posts").add({
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(), //identify as a function (), have values syncrhonous
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(), 
             caption: caption,
             imageUrl: url,
             username: username  //url got hold of with getDownloadUrl then url =>
@@ -87,7 +87,7 @@ console.log(username)
         });
         setProgress(0);
         setCaption("");
-        setImage(null) // have all state values dependant on data be reset on implement
+        setImage(null) 
     });
 }
 );
@@ -95,7 +95,7 @@ console.log(username)
 
 
 
-//blob problem, string value formatting 
+
 
 
 
