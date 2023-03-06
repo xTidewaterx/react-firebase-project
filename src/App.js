@@ -34,11 +34,12 @@ const [posts, setPosts] = useState([])
 const [usernameState, setUsernameState] = useState(null)
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
-const [open, setOpen] = React.useState(false);
+const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);
 const [user, setUser] = useState(null)
 const [openSignIn, setOpenSignIn]= useState(false)
 const [currentUsernameValue, setCurrentUsernameValue] = useState(null)
+const [ternaryStyle, setTernaryStyle] = useState("block")
 
 console.log(auth)
 
@@ -50,6 +51,10 @@ auth.onAuthStateChanged((authUser) => {
 if(authUser) {
  
   setUser(authUser) 
+
+  if(user) {
+    setOpen(false)
+  }
   if(authUser.displayName) { 
 
   } else {
@@ -106,6 +111,10 @@ const signUp = (event) => {
   setUsernameState(usernameState)
   setCurrentUsernameValue(usernameState)
 
+  if(currentUsernameValue != null) { setTernaryStyle("none")}
+
+  setOpen(false)
+
 
   .then((authUser) => {
 
@@ -117,6 +126,7 @@ const signUp = (event) => {
     }).then(console.log(authUser.user.displayName))
   })
   .catch((error) => alert(error.message))
+  
 
 }
 
@@ -124,12 +134,17 @@ const signUp = (event) => {
 
 const signIn = (event) => {
   event.preventDefault();
-  
+  setOpen(false)
 
   auth.signInWithEmailAndPassword(email, password)
   .catch((error) => alert(error.message))
 
+  setOpen(false)
   setOpenSignIn(false)
+  console.log(open)
+  console.log(open)
+  console.log(open)
+
 }
 
 const createUserNameValue =(e) => {
@@ -306,12 +321,12 @@ src= "https://www.siteexpert.biz/lib/image/instagram.png"
 
 </div>
 
-{user?.displayName ? (
+{user ? (
   <ImageUpload username={user.displayName} />
 
 
 ): (
-  <h3>Sorry, login required to upload</h3>
+  <h3 style={{display: ternaryStyle}}>Sorry, login required to upload</h3>
 )}
 
 
@@ -333,5 +348,6 @@ src= "https://www.siteexpert.biz/lib/image/instagram.png"
 
 
 export default App;
+
 
 
