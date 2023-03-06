@@ -322,7 +322,7 @@ src= "https://www.siteexpert.biz/lib/image/instagram.png"
 </div>
 
 {user ? (
-  <ImageUpload username={user.displayName} />
+  <ImageUpload username={user.displayName? user.displayName : usernameState} />
 
 
 ): (
@@ -333,7 +333,7 @@ src= "https://www.siteexpert.biz/lib/image/instagram.png"
 {
   posts.map(({id, post}) => {
 
-    return <Post key={post.id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} postId= {id} currentUser={user?.displayName} />
+    return <Post key={post.id} username={post.username? post.username : usernameState} caption={post.caption} imageUrl={post.imageUrl} postId= {id} currentUser={user?.displayName} />
 
 
   })
@@ -348,6 +348,7 @@ src= "https://www.siteexpert.biz/lib/image/instagram.png"
 
 
 export default App;
+
 
 
 
